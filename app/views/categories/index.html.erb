@@ -1,0 +1,22 @@
+<h2>Category</h2>
+<%= @parents.each do |parent| %>
+    <ul>
+        <li><%= parent.name %></li>
+    </ul>
+<% end %>
+
+<h2>Subcategory</h2>
+<%= @parents.each do |parent| %>
+    <%= parent.children.each do |child| %>
+    <ul>
+        <li><%= child.name %></li>
+    </ul>
+    <h3>Further Subcategory</h3>
+        <%= child.children.each do |grandchild| %>
+        <ul>
+            <li><%= grandchild.name %></li>
+        </ul>
+        <% end %>
+    <% end %>
+<% end %>
+
