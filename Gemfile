@@ -49,3 +49,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #https://github.com/stefankroes/ancestry
 gem 'ancestry'
+
+gem 'rack-cors'

@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_114346) do
+ActiveRecord::Schema.define(version: 2021_10_23_011426) do
 
   create_table "bills", force: :cascade do |t|
     t.integer "user_id"
-    t.string "month"
+    t.integer "month_id"
     t.integer "year"
     t.float "price"
     t.text "detail"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,6 +29,12 @@ ActiveRecord::Schema.define(version: 2021_10_22_114346) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "months", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

@@ -2,7 +2,7 @@ class CreateBills < ActiveRecord::Migration[6.1]
   def change
     create_table :bills do |t|
       t.integer :user_id
-      t.string :month
+      t.integer :month_id
       t.integer :year
       t.float :price
       t.text :detail
