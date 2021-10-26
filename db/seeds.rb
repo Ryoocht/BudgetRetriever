@@ -2,6 +2,7 @@
 def make_seeds
     make_categories
     make_months
+    make_bills
 end
 
 def make_categories
@@ -35,13 +36,14 @@ def make_categories
             child.children.create(name: grandchild)
         end
     end
-    
 end
 
 def make_months
     ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].each {|month| Month.create(name: month)}
 end
 
-make_seeds
+def make_bills
+    Bill.create(month_id: Month.first.id, year: 2021, price: 65.32, detail: "Take Away", category_id: Category.first.id)
+end
 
-# Bill.create(user_id: 1, month: "October", year: 2021, category_id: 1, subcategory_id: 1, further_subcategory_id: 1, price: 35.0, detail: "take away")
+make_seeds

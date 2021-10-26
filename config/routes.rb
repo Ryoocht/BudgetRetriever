@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'practice/index'
   resources :categories
   resources :bills, only: [:index, :show, :new, :edit, :destroy] do
     collection do
@@ -6,4 +7,5 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren'
     end
   end
+
 end

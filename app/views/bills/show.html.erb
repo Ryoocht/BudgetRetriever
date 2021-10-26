@@ -1,0 +1,10 @@
+<%= form_for :bill do |f| %>
+  <div class="listing-form-box">
+    <%= f.label :category, {class: 'listing-default-label'} %>
+    <div class="listing-select-wrapper">
+      <%= f.select :category, @category_parent_array, {}, {id: 'parent_category'} %>
+    </div>
+  </div>
+<% end %>
+
+<%= javascript_pack_tag "category" %>

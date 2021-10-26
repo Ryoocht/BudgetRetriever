@@ -1,15 +1,5 @@
-<%= form_for :bill do |f| %>
-<div class="listing-form-box">
-  <div class="listing-product-detail__category">
-    <%= f.label :category, {class: 'listing-default-label'} %>
-    <span class="listing-default--require">required</span>
-    <div class="listing-select-wrapper">
-      <div class="listing-select-wrapper__box">
-        <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'} %>
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>
+<h1>Budget</h1>
+<%= render "record_options" %>
+<%= render "form" %>
 
 <%= javascript_pack_tag "category" %>

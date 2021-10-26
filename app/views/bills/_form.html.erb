@@ -1,0 +1,42 @@
+<div class="bill-form">
+
+  <% if @bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved: </h2>
+      <ul>
+          <%= @bill.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_with model: @bill, class: "bill-fields" do |f| %>
+  <div class="bill-field">
+    <div class="date-field">
+      <span>Date: </span>
+      <%= f.fields_for :bill, @bill.month do |month_form| %>
+        <%= month_form.label :month %>
+        <%= month_form.collection_select :month, @months, :id, :name, {prompt: "---"} %>
+      <% end %>
+      <%= f.label :year %>
+      <%= f.number_field :year, in: 2020..2050, value: 2021 %><br>
+    </div>
+
+      <div class="category-field">
+      <span>Category: </span>
+      <%= f.label :category %><br>
+      <%= f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "Select Category"} %>
+      </div>
+      
+      <div class="price_detail_field">
+      <%= f.label :price %>
+      <%= f.number_field :price, min:0, step: 0.01, value:0.00 %>
+      <%= f.label :detail %>
+      <%= f.text_field :detail%>
+      </div>
+  
+  <%= f.submit "Create Record" %>
+  </div>
+<% end %>
+</div>
