@@ -2,11 +2,12 @@ class BillsController < ApplicationController
     before_action :set_category, only: [:new]
     before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
+    def index
+        @bills = Bill.all
+    end
+
     def show
-        @category_parent_array = ["---"]
-        Category.where(ancestry: nil).each do |parent|
-            @category_parent_array << parent.name
-        end
+        
     end
 
     def new
@@ -15,15 +16,12 @@ class BillsController < ApplicationController
     end
 
     def create
-        @bill = Bill.new(bill_params)
-        respond_to do |format|
-            if @bill.save
-                format.html{ redirect_to @bill, notice: "Bill record was successfully created." }
-                format.json { render action: "show", status: :create, location: @bill }
-            else
-                format.html { render action: "new" }
-                format.json { render json: @bill.errors, status: :unprocessable_entity }
-            end
+        puts "parameter: #{params}"
+        @bill = Bill.create(bill_params)
+        if @bill.save
+            redirect_to @bill #show
+        else
+            redirect_to new_bill_path #new
         end
     end
 
@@ -37,7 +35,6 @@ class BillsController < ApplicationController
 
     def get_category_grandchildren
         @category_grandchildren = Category.find(params[:category_id]).children
-        puts Category.find(params[:category_id]).children
     end
 
     private
@@ -51,6 +48,13 @@ class BillsController < ApplicationController
     end
 
     def bill_params
-        params.require(:bill).permit(:name, :year, :price, :detail, :category => [])
+        params.require(:bill).permit(
+            :month_id,
+            :year,
+            :price, 
+            :detail, 
+            :category_id
+        )
+        
     end
 end

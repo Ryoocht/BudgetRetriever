@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 2021_10_23_011426) do
     t.integer "year"
     t.float "price"
     t.text "detail"
-    t.bigint "category_id"
+    t.integer "category_id"
+    t.integer "subcategory_id"
+    t.integer "further_subcategory_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

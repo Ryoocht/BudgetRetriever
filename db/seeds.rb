@@ -1,4 +1,3 @@
-
 def make_seeds
     make_categories
     make_months
@@ -11,7 +10,7 @@ def make_categories
     income_child_array = ["Work", "Sales", "Investment", "Misc"]
     income_grandchild_array = [["Paycheck", "Bonus", "Tax Return"], ["Ebay/FB", "Purchase Refund"], ["Dividends", "Shares", "Cryptocurrency"], ["Present", "Lottery/Gambling"]]
     saving_child_array = ["Monthly Savings"]
-    saving_grandchild_array = ["Saving"]
+    saving_grandchild_array = [["Saving"]]
 
     expense = Category.create(name: "Expense")
     expense_child_array.each_with_index do |child, i|
@@ -39,11 +38,14 @@ def make_categories
 end
 
 def make_months
-    ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].each {|month| Month.create(name: month)}
+    ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].each {|month| Month.create!(name: month)}
 end
 
 def make_bills
-    Bill.create(month_id: Month.first.id, year: 2021, price: 65.32, detail: "Take Away", category_id: Category.first.id)
+    Bill.create(month_id: 10, year: 2021, price: 23.56, detail: "Uber", category_id: 1, subcategory_id: 22, further_subcategory_id: 27)
+    Bill.create(month_id: 10, year: 2021, price: 25.00, detail: "Haircut", category_id: 1, subcategory_id: 40, further_subcategory_id: 41)
+    Bill.create(month_id: 10, year: 2021, price: 34.56, detail: "Protain Powder", category_id: 1, subcategory_id: 56, further_subcategory_id: 58)
+    Bill.create(month_id: 10, year: 2021, price: 56.70, detail: "Woolies", category_id: 1, subcategory_id: 2, further_subcategory_id: 3)
 end
 
 make_seeds
