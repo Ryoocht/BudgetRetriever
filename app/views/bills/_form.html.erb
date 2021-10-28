@@ -11,30 +11,63 @@
     </div>
   <% end %>
 
-<%= form_with model: @bill, class: "bill-fields" do |f| %>
-  <div class="bill-field">
-    <div class="date-field">
-      <span>Date: </span>
-      <%= f.label :month_id %>
-      <%= f.collection_select :month_id, @months, :id, :name, {prompt: "---"} %>
-      <%= f.label :year %>
-      <%= f.number_field :year, in: 2020..2050, value: 2021 %><br>
-    </div>
+<% if bill.nil? %>
+  <%= form_with model: @bill, class: "bill-fields" do |f| %>
+    <div class="bill-field">
+      <div class="date-field">
+        <span>Date: </span>
+        <%= f.label :month_id %>
+        <%= f.collection_select :month_id, @months, :id, :name, {prompt: "---"} %>
+        <%= f.label :year %>
+        <%= f.number_field :year, in: 2020..2050, value: 2021 %><br>
+      </div>
 
       <div class="category-field">
-      <span>Category: </span>
-      <%= f.label :category %><br>
-      <%= f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "Select Category"} %>
+        <span>Category: </span><br>
+        <%= f.label :category %>
+        <%= f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "Select Category"} %>
       </div>
       
       <div class="price_detail_field">
-      <%= f.label :price %>
-      <%= f.number_field :price, min:0, step: 0.01, value:0.00 %>
-      <%= f.label :detail %>
-      <%= f.text_field :detail%>
+        <%= f.label :price %>
+        <%= f.number_field :price, min:0, step: 0.01, value:0.00 %>
+        <%= f.label :detail %>
+        <%= f.text_field :detail%>
       </div>
-  
-  <%= f.submit "Create Record" %>
-  </div>
+    
+      <%= f.submit submitBtn %>
+    </div>
+  <% end %>
+
+<% else %>
+  <%= form_with model: @bill, class: "bill-fields" do |f| %>
+    <div class="bill-field">
+      <div class="date-field">
+        <span>Date: </span>
+        <%= f.label :month_id %>
+        <%= f.collection_select :month_id, @months, :id, :name, value: bill.month_id %>
+        <%= f.label :year %>
+        <%= f.number_field :year, in: 2020..2050, value: bill.year %><br>
+      </div>
+
+      <div class="category-field">
+        <span>Category: </span><br>
+        <%= f.label :category %>
+        <%= f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "Select Category"} %>
+      </div>
+      
+      <div class="price_detail_field">
+        <%= f.label :price %>
+        <%= f.number_field :price, min:0, step: 0.01, value: bill.price %>
+        <%= f.label :detail %>
+        <%= f.text_field :detail, value: bill.detail %>
+      </div>
+    
+      <%= f.submit submitBtn %>
+    </div>
+  <% end %>
 <% end %>
+
 </div>
+
+<%= javascript_pack_tag "category" %>

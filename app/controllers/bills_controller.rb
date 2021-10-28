@@ -1,5 +1,5 @@
 class BillsController < ApplicationController
-    before_action :set_category, only: [:new]
+    before_action :set_category, only: [:new, :edit]
     before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -26,7 +26,18 @@ class BillsController < ApplicationController
     end
 
     def edit
-        
+        @bill = Bill.new
+        @months = Month.all
+    end
+
+    def update
+        @bill_param.update(bill_params)
+        redirect_to @bill_param
+    end
+
+    def destroy
+        @bill_param.destroy
+        redirect_to bills_path
     end
 
     def get_category_children
@@ -44,7 +55,7 @@ class BillsController < ApplicationController
     end
 
     def set_bill
-        @bill = Bill.find(params[:id])
+        @bill_param = Bill.find(params[:id])
     end
 
     def bill_params
@@ -53,8 +64,9 @@ class BillsController < ApplicationController
             :year,
             :price, 
             :detail, 
-            :category_id
+            :category_id,
+            :subcategory_id,
+            :further_subcategory_id
         )
-        
     end
 end
