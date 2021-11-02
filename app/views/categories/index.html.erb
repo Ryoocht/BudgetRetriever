@@ -1,21 +1,16 @@
-<h2>Category</h2>
-<%= @parents.each do |parent| %>
-    <ul>
-        <li><%= link_to parent.name, category_path(parent) %></li>
-    </ul>
-<% end %>
+<h1>Category</h1>
 
-<h2>Subcategory</h2>
-<%= @parents.each do |parent| %>
-    <%= parent.children.each do |child| %>
+<div class="all_categories">
+  <div class="category_list">
     <ul>
-        <li><%= "#{child.name}" %></li>
-    </ul>
-    <h3>Further Subcategory</h3>
-        <%= child.children.each do |grandchild| %>
-        <ul>
-            <li><%= "#{grandchild.name}" %></li>
-        </ul>
+      <li class="category_title">Main Category</li>
+      <ul class="category_name">
+        <% @category_parent_array.each do |parent| %>
+        <li id=<%= parent.id %>><%= parent.name %></li>
         <% end %>
-    <% end %>
-<% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<%= javascript_pack_tag "category" %>
