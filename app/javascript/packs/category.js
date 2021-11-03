@@ -85,3 +85,48 @@ getCategory.addEventListener('click', appendCategories);
 const handleSubcategory = subcategory_list => {
     subcategory_list.addEventListener('click', appendSubcategories);
 }
+
+//each button action
+const category_list = document.querySelector(".all_categories");
+const category_field = document.querySelector(".category_input_field");
+const category_table = document.querySelector(".category_table");
+const list_button = document.querySelector("#all_list_button");
+const add_button = document.querySelector("#add_button");
+const edit_button = document.querySelector("#edit_button");
+
+//category list element visibility
+const listEventHandler = () => {
+    if (category_list.className.includes("visibilityOn")) {
+        category_list.classList.remove("visibilityOn");
+        category_field.classList.add("visibilityOn");
+        category_table.classList.add("visibilityOn");
+    } else {
+        category_field.classList.add("visibilityOn");
+    }
+}
+
+//add element visibility
+const addEventHandler = () => {
+    if (category_field.className.includes("visibilityOn")) {
+        category_field.classList.remove("visibilityOn");
+    } else {
+        category_field.classList.add("visibilityOn");
+    }
+}
+
+//edit element visibility
+const editEventListner = () => {
+    if (category_table.className.includes("visibilityOn")) {
+        category_table.classList.remove("visibilityOn");
+        category_field.classList.add("visibilityOn");
+        category_list.classList.add("visibilityOn");
+    } else {
+        category_table.classList.add("visibilityOn");
+        category_list.classList.remove("visibilityOn");
+    }
+}
+
+list_button.addEventListener('click', listEventHandler);
+add_button.addEventListener('click', addEventHandler);
+edit_button.addEventListener('click', editEventListner);
+

@@ -1,0 +1,21 @@
+<div class="category_input_field visibilityOn">
+  <%= form_with model: @category do |f| %>
+    <div>
+      <div class="main_category_box">
+        <%= f.label :main_category %><br>
+        <%= f.text_field :main_category %>
+      </div>
+      <div class="subcategory_box">
+        <%= f.label :subcategory %><br>
+        <%= f.text_field :subcategory %>
+      </div>
+      <div class="further_subcategory_box">
+        <%= f.label :further_subcategory %><br>
+        <%= f.text_field :further_subcategory %>
+      </div>
+      <div class="action">
+        <%= f.submit %>
+      </div>
+    </div>
+  <% end %>
+</div>
