@@ -54,12 +54,34 @@ class CategoriesController < ApplicationController
         redirect_to categories_path
     end
 
+    def update_category
+        category = Category.find_by(id: update_params[:id])
+        category.update(name: update_params[:name])
+        redirect_to categories_path
+    end
+
+    def delete_selected_category
+        selected_category = Category.find_by(id: params[:category_id])
+        selected_category.destroy
+        redirect_to categories_path
+    end
+
     def get_category_children
         @category_children = Category.find(params[:category_id]).children
     end
 
     def get_category_grandchildren
         @category_grandchildren = Category.find(params[:category_id]).children
+    end
+
+    def get_selected_category
+        @selected_category = Category.find_by(id: params[:category_id])
+        if  @selected_category.parent
+            @parent = @selected_category.parent
+            if  @parent.parent
+                @grand_parent = @parent.parent
+            end
+        end
     end
 
     private
@@ -70,5 +92,9 @@ class CategoriesController < ApplicationController
 
     def category_params
         params.require(:category).permit(:main_category, :subcategory, :further_subcategory)
+    end
+
+    def update_params
+        params.require(:category).permit(:id, :name)
     end
 end

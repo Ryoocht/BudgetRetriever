@@ -1,5 +1,5 @@
 const appendOption = category => {
-    let html = `<li id="${category.id}">${category.name}</li>`
+    let html = `<li id="${category.id}">${category.name}</li>`;
     return html;
 }
 
@@ -41,8 +41,7 @@ const insertChildHTML = (data, status) => {
 
 //fetch category data to BillsController routes and get sorted category data from its route
 const appendModel = (childRoute, e) => {
-    const selectedValue = e.target.id
-    console.log(e.target.parentElement.className)
+    const selectedValue = e.target.id;
     if (selectedValue != "---") {
         fetch(`categories/${childRoute}?category_id=${selectedValue}`)
         .then(response => response.json())
@@ -72,11 +71,11 @@ const appendModel = (childRoute, e) => {
 }
 
 const appendCategories = e => {
-    appendModel("get_category_children", e)
+    appendModel("get_category_children", e);
 }
 
 const appendSubcategories = e => {
-    appendModel("get_category_grandchildren", e)
+    appendModel("get_category_grandchildren", e);
 }
 
 const getCategory = document.querySelector(".category_name");
@@ -90,9 +89,13 @@ const handleSubcategory = subcategory_list => {
 const category_list = document.querySelector(".all_categories");
 const category_field = document.querySelector(".category_input_field");
 const category_table = document.querySelector(".category_table");
+const edit_table = document.querySelector(".edit_table");
 const list_button = document.querySelector("#all_list_button");
 const add_button = document.querySelector("#add_button");
 const edit_button = document.querySelector("#edit_button");
+const delete_button = document.querySelector("#delete_button");
+const main_table = document.querySelector(".main_category_table");
+const sub_table = document.querySelector(".subcategory_table");
 
 //category list element visibility
 const listEventHandler = () => {
@@ -109,24 +112,144 @@ const listEventHandler = () => {
 const addEventHandler = () => {
     if (category_field.className.includes("visibilityOn")) {
         category_field.classList.remove("visibilityOn");
+        category_table.classList.add("visibilityOn");
+        edit_table.classList.add("visibilityOn");
     } else {
         category_field.classList.add("visibilityOn");
+        category_list.classList.remove("visibilityOn");
     }
 }
 
 //edit element visibility
-const editEventListner = () => {
+const editEventHandler = () => {
     if (category_table.className.includes("visibilityOn")) {
         category_table.classList.remove("visibilityOn");
         category_field.classList.add("visibilityOn");
         category_list.classList.add("visibilityOn");
+        edit_table.classList.add("visibilityOn");
+        category_table.classList.remove("delete_clicked");
     } else {
         category_table.classList.add("visibilityOn");
         category_list.classList.remove("visibilityOn");
+        category_table.classList.remove("delete_clicked");
+    }
+}
+
+const updateEventHandler = () => {
+    if (edit_table.className.includes("visibilityOn")) {
+        edit_table.classList.remove("visibilityOn");
+        category_field.classList.add("visibilityOn");
+        category_list.classList.add("visibilityOn");
+    } else {
+        edit_table.classList.add("visibilityOn");
+        category_table.classList.remove("visibilityOn");
     }
 }
 
 list_button.addEventListener('click', listEventHandler);
 add_button.addEventListener('click', addEventHandler);
-edit_button.addEventListener('click', editEventListner);
+edit_button.addEventListener('click', editEventHandler);
+delete_button.addEventListener('click', () => {
+    editEventHandler();
+    if (!category_table.className.includes("visibilityOn")) {
+        category_table.className += " delete_clicked";
+    } else {
+        category_table.classList.remove("delete_clicked");
+    }
+});
+main_table.addEventListener('click', updateEventHandler);
+sub_table.addEventListener('click', updateEventHandler);
 
+//target clicked category table
+const updateCategoryForm = category => {
+    let html = ` 
+        <div class="selected_element">    
+            <label for="category">Selected Category</label>
+            <input type="hidden" name="category[id]" value=${category.id}>
+            <input type="text" name="category[name]" id=${category.id} value=${category.name}>
+            <input type="submit" value="UPDATE">
+        </div>`;
+    return html;
+}
+
+const getParentCategory = category => {
+    let html = `
+        <div class="parent_element"    
+            <p>⇧</P>
+            <p>${category.name}</p>
+        </div`;
+    return html;
+}
+
+const insertData = data => {
+    hasData = document.querySelector(".insertHTML");
+    if (hasData) {
+        hasData.remove();
+    }
+    const div = document.createElement("div");
+    const edit_table = document.querySelector(".edit_table");
+    div.className = "insertHTML";
+    
+    const appendSelect = (select, element) => {
+        element.innerHTML = updateCategoryForm(select);
+        edit_table.appendChild(element);
+    }
+    
+    const appendParents = (select, element) => {
+        element.innerHTML += getParentCategory(select);
+    }
+
+    if (data.grand_parent) {
+        appendSelect(data.select, div);
+        appendParents(data.parent, div);
+        appendParents(data.grand_parent, div);
+        
+    } else if (data.parent) {
+        appendSelect(data.select, div);
+        appendParents(data.parent, div);
+    } else {
+        appendSelect(data.select, div);
+    }
+}
+
+const getSelectedTable = e => {
+    const selectedValue = e.target.id;
+    if (selectedValue !== "undefined") {
+        fetch(`categories/get_selected_category?category_id=${selectedValue}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            insertData(data);
+        })
+        .catch((error) => {console.error('Error:', error)});
+    }
+}
+
+const deleteSetectedTable = e => {
+    const selectedValue = e.target.id;
+    if (selectedValue !== "undefined") {
+        fetch(`categories/delete_selected_category?category_id=${selectedValue}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {console.error('Error:', error)});
+    }
+}
+
+const targetTable = document.querySelector(".main_category_table");
+const targetSubTable = document.querySelector(".subcategory_table");
+targetTable.addEventListener('click', e => {
+    if (category_table.className.includes("delete_clicked")) {
+        deleteSetectedTable(e);
+    } else {
+        getSelectedTable(e);
+    }
+});
+targetSubTable.addEventListener('click', e => {
+    if (category_table.className.includes("delete_clicked")) {
+        deleteSetectedTable(e);
+    } else {
+        getSelectedTable(e);
+    }
+});

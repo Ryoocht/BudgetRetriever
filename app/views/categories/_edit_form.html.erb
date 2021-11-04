@@ -1,13 +1,18 @@
+<%= form_with model: @category, url: update_category_categories_path, method: "patch" do |f| %>
+    <div class="edit_table visibilityOn">
+    </div>
+<% end %>
+
 <div class="category_table visibilityOn">
     <table class="main_category_table">
         <thead>
             <tr>
-                <th>Main Category</th>
+                <th colspan="5">Main Category</th>
             </tr>
         </thead>
         <tbody>
             <% @category_parent_array.each do |main| %>
-                <td><strong><%= main.name %></strong></td>
+                <td id=<%= main.id %>><%= main.name %></td>
             <% end %>
         </tbody>
     </table>
@@ -21,12 +26,12 @@
         <tbody>
             <% @category_parent_array.each do |main| %>
             <tr>
-                <th colspan="10"><%= main.name %></th>
+                <th colspan="10" id=<%= main.id %>><%= main.name %></th>
                 <% getChildCategories(main.id).each do |sub| %>
                 <tr>
-                    <th scope="rowgroup"><%= sub.name %></th>
+                    <th scope="rowgroup" id=<%= sub.id %>><%= sub.name %></th>
                     <% getChildCategories(sub.id).each do |grand_child| %>
-                        <th scope="row"><%= grand_child.name %></th>
+                        <th scope="row" id=<%= grand_child.id %>><%= grand_child.name %></th>
                     <% end %>
                 </tr>
                 <% end %>
