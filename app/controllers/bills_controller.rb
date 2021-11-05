@@ -16,7 +16,6 @@ class BillsController < ApplicationController
     end
 
     def create
-        puts "parameter: #{params}"
         @bill = Bill.create(bill_params)
         if @bill.save
             redirect_to @bill #show

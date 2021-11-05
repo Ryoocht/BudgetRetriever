@@ -1,0 +1,10 @@
+<h1>Account Page</h1>
+
+<div class="account_box">
+<%= form_with model: @account do |f| %>
+  <%= f.label :create_account %><br>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.submit :create %>
+<% end %>
+</div>
