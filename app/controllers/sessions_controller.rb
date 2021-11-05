@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    skip_before_action :require_logged_in, only: [:new, :create]
+
     def new
         
     end
@@ -8,7 +10,12 @@ class SessionsController < ApplicationController
         user = user.try(:authenticate, params[:user][:password])
         return redirect_to(controller: 'sessions', action: 'new') unless user
         session[:user_id] = user.id
-            
-        end
+        @user = user
+        redirect_to controller: 'welcome', action: 'home'
+    end
+
+    def destroy
+        session.delete :user_id
+        redirect_to '/'
     end
 end
