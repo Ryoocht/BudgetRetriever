@@ -62,6 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     ancestry (4.1.0)
       activerecord (>= 5.2.6)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
@@ -187,6 +188,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   jbuilder (~> 2.7)
