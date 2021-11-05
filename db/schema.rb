@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 2021_11_05_083847) do
   end
 
   create_table "users_accounts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "account_id", null: false
+    t.integer "user_id"
+    t.integer "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_users_accounts_on_account_id"
