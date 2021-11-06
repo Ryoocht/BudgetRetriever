@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:new, :create]
   resources :accounts, only: [:new, :create, :show] do  
-    resources :bills, :categories, only: [:index, :new, :create, :show, :edit, :destroy] do
+    resources :bills, :categories, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       collection do
         get 'get_category_children'
         get 'get_category_grandchildren'

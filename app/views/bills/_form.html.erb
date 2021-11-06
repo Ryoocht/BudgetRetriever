@@ -42,7 +42,7 @@
   <% end %>
 
 <% else %>
-  <%= form_with model: @bill, class: "bill-fields" do |f| %>
+  <%= form_with model: @bill, url: account_bill_path(bill), class: "bill-fields" do |f| %>
     <div class="bill-field">
       <div class="date-field">
         <span>Date: </span>

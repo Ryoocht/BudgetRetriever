@@ -1,5 +1,5 @@
 <div class="category_input_field visibilityOn">
-  <%= form_with model: @category do |f| %>
+  <%= form_with model: @category, url: new_account_category_path do |f| %>
     <div>
       <div class="main_category_box">
         <%= f.label :main_category %><br>

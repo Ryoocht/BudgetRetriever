@@ -1,44 +1,45 @@
 class BillsController < ApplicationController
     before_action :set_category, only: [:new, :edit]
     before_action :set_bill, only: [:show, :edit, :update, :destroy]
+    before_action :set_account, only: [:index, :show, :new, :create]
 
     def index
         @bills = Bill.all
-        @account = Account.find(params[:account_id])
     end
 
     def show
-        
     end
 
     def new
         @bill = Bill.new
         @months = Month.all
-        @account = Account.find(params[:account_id])
     end
 
     def create
         @bill = Bill.create(bill_params)
         if @bill.save
-            redirect_to "/accounts/#{params[:account_id]}/bills/#{@bill.id}}"
+            redirect_to account_bill_path(@account, @bill)
         else
             redirect_to new_account_bill_path
         end
     end
 
     def edit
-        @bill = Bill.new
+        @bill = Bill.find(params[:id])
         @months = Month.all
+        @account = Account.find(params[:account_id])
     end
-
+    
     def update
         @bill_param.update(bill_params)
-        redirect_to @bill_param
+        account = bill_params[:account_id]
+        redirect_to account_bills_path(account)
     end
 
     def destroy
-        @bill_param.destroy
-        redirect_to account_bill_path
+        if @bill_param.destroy
+            redirect_to account_bills_path
+        end
     end
 
     def get_category_children
@@ -57,6 +58,10 @@ class BillsController < ApplicationController
 
     def set_bill
         @bill_param = Bill.find(params[:id])
+    end
+
+    def set_account
+        @account = Account.find(params[:account_id])
     end
 
     def bill_params

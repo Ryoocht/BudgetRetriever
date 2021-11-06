@@ -1,2 +1,21 @@
 <%= render 'welcome/home' %>
-<h2>Home Page</h2>
+
+<h2>All Record</h2>
+<% @bills.each do |bill| %>
+    <div class="date_space">
+        <%= bill.month_id %>/<%= bill.year %>
+    </div>
+    <div class="category_space">
+        <%= idToCategoryName(bill.category_id) %>
+        <%= idToCategoryName(bill.subcategoryid) %>
+        <%= idToCategoryName(bill.further_subcategoryid) %>
+    </div>
+
+    <div class="detail">
+        <%= bill.price %>
+        <%= bill.detail %>
+    </div>
+
+    <button><%= link_to "Edit", edit_account_bill_path(@account, bill) %></button>
+    <button><%= link_to "Delete", account_bill_path(@account, bill), method: "delete" %></button>
+<% end %>

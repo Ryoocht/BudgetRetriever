@@ -1,18 +1,26 @@
+<%= render 'welcome/home' %>
+
 <h2>Added Record</h2>
 
 <%= render "record_options" %>
 <div class="show_record">
-  <h3>Date: </h3>
-  <%= @bill_param.month_id %><span> / </span><%= @bill_param.year %><br>
+  <div class="date_div">
+    <h3>Date: </h3>
+    <%= @bill_param.month_id %><span> / </span><%= @bill_param.year %><br>
+  </div>
+  <div class="category_div">
   <h3>Category</h3>
-  <%= idToCategoryName(@bill_param.category_id) %>
-  <%= idToCategoryName(@bill_param.subcategoryid) %>
-  <%= idToCategoryName(@bill_param.further_subcategoryid) %>
-  <h3>Details</h3>
-  <span>Price: </span>
-  <%= "$#{@bill_param.price}" %><br>
-  <span>Detail: </span>
-  <%= @bill_param.detail %>
+    <%= idToCategoryName(@bill_param.category_id) %>
+    <%= idToCategoryName(@bill_param.subcategoryid) %>
+    <%= idToCategoryName(@bill_param.further_subcategoryid) %>
+  </div>
+  <div class="detail_div">
+    <h3>Details</h3>
+      <p>Price: </p>
+      <%= "$#{@bill_param.price}" %><br>
+      <p>Detail: </p>
+      <%= @bill_param.detail %>
+  </div>
 <div>
 
 <%= render "update_delete" %>
