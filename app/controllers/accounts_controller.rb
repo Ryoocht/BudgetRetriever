@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
             find_account = Account.find_by(id: account_params[:account_id])
             if find_account
                 @account = find_account
-                redirect_to account_path(@account)
+                redirect_to account_bills_path(@account)
             else
                 render :new
             end
@@ -18,7 +18,7 @@ class AccountsController < ApplicationController
             account = Account.new(account_params)
             if account.save
                 @account = account
-                redirect_to account_path(@account)
+                redirect_to account_bills_path(@account)
             else
                 render :new
             end

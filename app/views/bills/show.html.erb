@@ -4,11 +4,10 @@
 <div class="show_record">
   <h3>Date: </h3>
   <%= @bill_param.month_id %><span> / </span><%= @bill_param.year %><br>
-  <h3>Category</h3> 
-  <%# add category link %>
+  <h3>Category</h3>
   <%= idToCategoryName(@bill_param.category_id) %>
-  <%= idToCategoryName(@bill_param.subcategory_id) %>
-  <%= idToCategoryName(@bill_param.further_subcategory_id) %>
+  <%= idToCategoryName(@bill_param.subcategoryid) %>
+  <%= idToCategoryName(@bill_param.further_subcategoryid) %>
   <h3>Details</h3>
   <span>Price: </span>
   <%= "$#{@bill_param.price}" %><br>

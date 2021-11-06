@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_11_05_083847) do
     t.float "price"
     t.text "detail"
     t.integer "category_id", null: false
+    t.integer "subcategoryid"
+    t.integer "further_subcategoryid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_bills_on_account_id"

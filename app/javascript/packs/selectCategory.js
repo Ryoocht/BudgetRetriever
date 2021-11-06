@@ -7,13 +7,13 @@ const appendChildrenBox = (insertHTML, status) => {
     let childSelectHtml = "";
     childSelectHtml = `
         <label for="subcategory">Subcategory</label>
-        <select name="bill[subcategory_id]" class="subcategory_selecter" id="bill_subcategory_id"><br>
+        <select name="bill[subcategoryid]" class="subcategory_selecter" id="bill_subcategory_id"><br>
             <option value="---" data-category="---">---</option>
             ${insertHTML}
         </select>`;
     grandChildSelectHtml = `
         <label for="further_subcategory">Further Subcategory</label>
-        <select name="bill[further_subcategory_id]" class="further_subcategory_selecter" id="bill_further_subcategory_id"><br>
+        <select name="bill[further_subcategoryid]" class="further_subcategory_selecter" id="bill_further_subcategory_id"><br>
             <option value="---" data-category="---">---</option>
             ${insertHTML}
         </select>`;

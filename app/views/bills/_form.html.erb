@@ -12,7 +12,7 @@
   <% end %>
 
 <% if bill.nil? %>
-  <%= form_with model: @bill, class: "bill-fields" do |f| %>
+  <%= form_with model: @bill, url: account_bills_path, class: "bill-fields" do |f| %>
     <div class="bill-field">
       <div class="date-field">
         <span>Date: </span>
@@ -34,7 +34,9 @@
         <%= f.label :detail %>
         <%= f.text_field :detail%>
       </div>
-    
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :account_id, value: @account.id %>
+
       <%= f.submit submitBtn %>
     </div>
   <% end %>
@@ -62,6 +64,8 @@
         <%= f.label :detail %>
         <%= f.text_field :detail, value: bill.detail %>
       </div>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :account_id, value: @account.id %>
     
       <%= f.submit submitBtn %>
     </div>

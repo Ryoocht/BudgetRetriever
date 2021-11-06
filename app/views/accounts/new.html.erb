@@ -1,8 +1,10 @@
-<h1>Create Account</h1>
+<%= render 'welcome/username' %>
+
+<h1>Create A Budget Table</h1>
 
 <div class="account_box">
 <%= form_with model: @account do |f| %>
-  <%= f.label :create_account %><br>
+  <%= f.label :create_your_new_table %><br>
   <%= f.text_field :name %>
   <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.submit :create %>
@@ -12,7 +14,7 @@
 
 <div class="account_box">
 <%= form_with model: @account do |f| %>
-  <%= f.label :select_account %><br>
+  <%= f.label :select_your_table %><br>
   <%= f.collection_select :account_id, @accounts, :id, :name, {prompt: "---"} %>
   <%= f.submit :select %>
 <% end %>

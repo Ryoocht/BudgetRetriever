@@ -1,0 +1,19 @@
+<p class="user_info">User Name</p>
+<h3 class="user_name"><%= @user.name %></h3>
+<p class="user_info">Table Name</p>
+<h3 class="user_name"><%= @account.name %></h3>
+
+<div class="nav-bar">
+  <div class="nav-buttons">
+    <button><%= link_to "Account", new_account_path %></button>
+  </div>
+  <div class="nav-buttons">
+    <button><%= link_to "Bill", new_account_bill_path %></button>
+  </div>
+  <div class="nav-buttons">
+    <button><%= link_to "Category", new_account_path %></button>
+  </div>
+  <div class="nav-buttons">
+    <button><%= link_to "Total", new_account_path %></button>
+  </div>
+</div>

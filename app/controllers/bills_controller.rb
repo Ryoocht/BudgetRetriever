@@ -14,14 +14,15 @@ class BillsController < ApplicationController
     def new
         @bill = Bill.new
         @months = Month.all
+        @account = Account.find(params[:account_id])
     end
 
     def create
         @bill = Bill.create(bill_params)
         if @bill.save
-            redirect_to @bill #show
+            redirect_to "/accounts/#{params[:account_id]}/bills/#{@bill.id}}"
         else
-            redirect_to new_bill_path #new
+            redirect_to new_account_bill_path
         end
     end
 
@@ -37,7 +38,7 @@ class BillsController < ApplicationController
 
     def destroy
         @bill_param.destroy
-        redirect_to bills_path
+        redirect_to account_bill_path
     end
 
     def get_category_children
@@ -60,11 +61,14 @@ class BillsController < ApplicationController
 
     def bill_params
         params.require(:bill).permit(
+            :user_id,
             :month_id,
             :year,
             :price, 
             :detail, 
             :category_id,
+            :subcategoryid,
+            :further_subcategoryid,
             :account_id
         )
     end

@@ -4,23 +4,20 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   
   resources :users, only: [:new, :create]
-  resources :accounts, only: [:new, :create, :show] do
-  
-
-  resources :bills, :categories, only: [:index, :new, :create, :show, :edit] do
-    collection do
-      get 'get_category_children'
-      get 'get_category_grandchildren'
-      get 'get_selected_category'
-      patch 'update_category'
-      get 'delete_selected_category'
-    end
-    member do
-      get 'get_category_children'
-      get 'get_category_grandchildren'
-      get 'get_selected_category'
+  resources :accounts, only: [:new, :create, :show] do  
+    resources :bills, :categories, only: [:index, :new, :create, :show, :edit, :destroy] do
+      collection do
+        get 'get_category_children'
+        get 'get_category_grandchildren'
+        get 'get_selected_category'
+        patch 'update_category'
+        get 'delete_selected_category'
+      end
+      member do
+        get 'get_category_children'
+        get 'get_category_grandchildren'
+        get 'get_selected_category'
+      end
     end
   end
-  end
-  root 'welcome#home'
 end

@@ -8,6 +8,8 @@ class CreateBills < ActiveRecord::Migration[6.1]
       t.float :price
       t.text :detail
       t.references :category, null: false, foreign_key: true
+      t.integer :subcategoryid
+      t.integer :further_subcategoryid
 
       t.timestamps
     end

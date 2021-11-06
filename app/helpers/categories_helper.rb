@@ -1,6 +1,6 @@
 module CategoriesHelper
     def idToCategoryName(id)
-        category = Category.find(id)
+        category = Category.find_by(id: id)
         category.name
     end
 
