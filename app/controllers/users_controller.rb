@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     return redirect_to controller: 'users', action: 'new' unless @user.save
     session[:user_id] = @user.id
-    redirect_to new_account_path
+    redirect_to root_path
   end
 
   private

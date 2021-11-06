@@ -1,12 +1,7 @@
 def make_seeds
-    make_accounts
     make_categories
     make_months
     # make_bills
-end
-
-def make_accounts
-    ["Personal", "Business", "Familly", "Joint Bills", "Credit Bills"].each {|account| Account.create(name: account)}
 end
 
 def make_categories

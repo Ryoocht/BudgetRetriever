@@ -4,6 +4,7 @@ class BillsController < ApplicationController
 
     def index
         @bills = Bill.all
+        @account = Account.find(params[:account_id])
     end
 
     def show
@@ -64,8 +65,7 @@ class BillsController < ApplicationController
             :price, 
             :detail, 
             :category_id,
-            :subcategory_id,
-            :further_subcategory_id
+            :account_id
         )
     end
 end

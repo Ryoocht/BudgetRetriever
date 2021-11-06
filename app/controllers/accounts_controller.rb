@@ -1,21 +1,38 @@
 class AccountsController < ApplicationController
     def new
+        @users_accounts = UsersAccount.all
+        @accounts = Account.all
         @account = Account.new
     end
 
     def create
-        account = Account.create(account_params)
-        if account.save
-            @account = account
-            redirect_to new_bill_path
+        if account_params[:account_id]
+            find_account = Account.find_by(id: account_params[:account_id])
+            if find_account
+                @account = find_account
+                redirect_to account_path(@account)
+            else
+                render :new
+            end
         else
-            render :new
+            account = Account.new(account_params)
+            if account.save
+                @account = account
+                redirect_to account_path(@account)
+            else
+                render :new
+            end
         end
+        
+    end
+
+    def show
+
     end
 
     private
 
     def account_params
-        params.require(:account).permit(:name, :user_id)
+        params.require(:account).permit(:name, :account_id, user_id:[])
     end
 end
