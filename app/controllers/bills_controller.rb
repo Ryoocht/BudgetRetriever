@@ -4,7 +4,7 @@ class BillsController < ApplicationController
     before_action :set_account, only: [:index, :show, :new, :create]
 
     def index
-        @bills = Bill.all
+        @bills = Bill.where(account_id: @account)
     end
 
     def show

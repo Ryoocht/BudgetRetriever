@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
     before_action :set_category, only: [:index]
+    before_action :set_account, only: [:index, :create]
 
     def index
         @category = Category.new
@@ -51,19 +52,19 @@ class CategoriesController < ApplicationController
                 end
             end
         end
-        redirect_to categories_path
+        redirect_to account_categories_path
     end
 
     def update_category
         category = Category.find_by(id: update_params[:id])
         category.update(name: update_params[:name])
-        redirect_to categories_path
+        redirect_to account_categories_path
     end
 
     def delete_selected_category
         selected_category = Category.find_by(id: params[:category_id])
         selected_category.destroy
-        redirect_to categories_path
+        redirect_to account_categories_path
     end
 
     def get_category_children
@@ -88,6 +89,10 @@ class CategoriesController < ApplicationController
 
     def set_category
         @category_parent_array = Category.where(ancestry: nil)
+    end
+
+    def set_account
+        @account = Account.find(params[:account_id])
     end
 
     def category_params
