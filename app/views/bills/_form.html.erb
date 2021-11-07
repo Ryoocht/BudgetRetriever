@@ -14,60 +14,60 @@
 <% if bill.nil? %>
   <%= form_with model: @bill, url: account_bills_path, class: "bill-fields" do |f| %>
     <div class="bill-field">
-      <div class="date-field">
-        <span>Date: </span>
-        <%= f.label :month_id %>
-        <%= f.collection_select :month_id, @months, :id, :name, {prompt: "---"} %>
-        <%= f.label :year %>
-        <%= f.number_field :year, in: 2020..2050, value: 2021 %><br>
+        
+      <div class="input-field date-field">
+        <p class="input-title">Date</p>
+        <%= f.collection_select :month_id, @months, :id, :name, {prompt: "-- Month --"}, class: "dropdown-style" %>
+        <%= f.number_field :year, in: 2020..2050, value: 2021, class: "dropdown-style" %><br>
       </div>
 
-      <div class="category-field">
-        <span>Category: </span><br>
-        <%= f.label :category %>
-        <%= f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "Select Category"} %>
+      <div class="input-field category-field">
+        <p class="input-title">Category</p>
+        <%= f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "Select Category"}, class: "dropdown-style" %>
       </div>
       
-      <div class="price_detail_field">
-        <%= f.label :price %>
-        <%= f.number_field :price, min:0, step: 0.01, value:0.00 %>
-        <%= f.label :detail %>
-        <%= f.text_field :detail%>
+      <div class="input-field price_field">
+        <p class="input-title">Price</p>
+        <%= f.number_field :price, min:0, step: 0.01, value:0.00, class: "dropdown-style" %>
+      </div>
+      <div class="input-field detail_field">
+        <p class="input-title">Details</p>
+        <%= f.text_field :detail, class: "dropdown-style"%>
       </div>
       <%= f.hidden_field :user_id, value: @user.id %>
       <%= f.hidden_field :account_id, value: @account.id %>
 
-      <%= f.submit submitBtn %>
+      <%= f.submit submitBtn, class: "submit-button" %>
     </div>
   <% end %>
 
 <% else %>
   <%= form_with model: @bill, url: account_bill_path(bill), class: "bill-fields" do |f| %>
     <div class="bill-field">
-      <div class="date-field">
-        <span>Date: </span>
-        <%= f.label :month_id %>
-        <%= f.collection_select :month_id, @months, :id, :name, value: bill.month_id %>
-        <%= f.label :year %>
-        <%= f.number_field :year, in: 2020..2050, value: bill.year %><br>
+
+      <div class="input-field date-field">
+        <p class="input-title">Date</p>
+        <%= f.collection_select :month_id, @months, :id, :name, {prompt: "#{bill.month_id}"}, class: "dropdown-style" %>
+        <%= f.number_field :year, in: 2020..2050, value: bill.year, class: "dropdown-style" %>
       </div>
 
-      <div class="category-field">
-        <span>Category: </span><br>
-        <%= f.label :category %>
-        <%= f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "Select Category"} %>
+      <div class="input-field category-field">
+        <p class="input-title">Category</p>
+        <%= f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "Select Category"}, class: "dropdown-style" %>
       </div>
       
-      <div class="price_detail_field">
-        <%= f.label :price %>
-        <%= f.number_field :price, min:0, step: 0.01, value: bill.price %>
-        <%= f.label :detail %>
-        <%= f.text_field :detail, value: bill.detail %>
+      <div class="input-field price_field">
+        <p class="input-title">Price</p>
+        <%= f.number_field :price, min:0, step: 0.01, value: bill.price, class: "dropdown-style" %>
+      </div>
+      <div class="input-field detail_field">
+        <p class="input-title">Details</p>
+        <%= f.text_field :detail, value: bill.detail, class: "dropdown-style" %>
       </div>
       <%= f.hidden_field :user_id, value: @user.id %>
       <%= f.hidden_field :account_id, value: @account.id %>
     
-      <%= f.submit submitBtn %>
+      <%= f.submit submitBtn, class: "submit-button" %>
     </div>
   <% end %>
 <% end %>
