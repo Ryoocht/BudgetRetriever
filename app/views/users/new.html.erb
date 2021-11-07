@@ -1,10 +1,32 @@
 <%= form_for @user, url: users_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "create" %>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+
+<div class="title-block">
+  <div class="login-form">
+    <h1 class="login-title">Signup</h1>
+    <div class="form-input-material">
+      <%= f.text_field :name, placeholder: "Username" %>
+    </div>
+    <div class="form-input-material">
+      <%= f.password_field :password, placeholder: "Password" %>
+    </div>
+    <div class="form-input-material">
+      <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+    </div>
+    <div class="buttons">
+      <%= f.submit "Sign up", class: "submit-button" %>
+      <div class="userlog-link">
+        <%= link_to 'log in', login_path, class: "userlog-anchor" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="title-desc">
+    <h1 class="budget-retriever-title">Budget Retriever</h1>
+  <div>
+
+</div>
 <% end %>
  

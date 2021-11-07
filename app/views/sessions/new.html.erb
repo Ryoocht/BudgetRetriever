@@ -1,13 +1,28 @@
 <%= form_for @user, url: login_path, method: :post do |f| %>
-  <h1>Login</h1>
-  <div class="form-input-material">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+
+<div class="title-block">
+  <div class="login-form">
+    <h1 class="login-title">Login</h1>
+    <div class="form-input-material">
+      <%= f.text_field :name, placeholder: "Username" %>
+    </div>
+    <div class="form-input-material">
+      <%= f.password_field :password, placeholder: "Password" %>
+    </div>
+    <div class="buttons">
+      <%= f.submit "log in", class: "submit-button" %><br>
+      <div class="userlog-link">
+        <%= link_to 'sign up', new_user_path, class: "userlog-anchor" %>
+      </div>
+    </div>
   </div>
-  <div class="form-input-material">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <%= f.submit "log in" %>
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+  
+  <div class="title-desc">
+    <h1 class="budget-retriever-title">Budget Retriever</h1>
+  <div>
+
+</div>
 <% end %>

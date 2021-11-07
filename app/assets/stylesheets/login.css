@@ -1,0 +1,150 @@
+html {
+    height:100%;
+  }
+  
+body {
+    margin:0;
+}
+
+.title-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+    display: flex;
+    width: auto;
+    height: auto;
+}
+
+.login-form {
+    margin: 30px;
+    width: 350px;
+    height: 450px;
+    text-align: center;
+}
+
+.title-desc {
+    position: relative;
+    margin: 30px;
+    width: 350px;
+    height: 350px;
+    text-align: center;
+}
+
+.bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #e4d1d1 50%, #77a8a8 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+}
+  
+.bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+}
+
+.bg3 {
+    animation-duration:5s;
+}
+
+.login-title {
+    margin-top: 100px;
+    font-family: alef;
+}
+
+@keyframes slide {
+0% {
+    transform:translateX(-25%);
+}
+100% {
+    transform:translateX(25%);
+}
+}
+
+.form-input-material-form {
+    position: relative;
+    z-index: 2;
+}
+
+#user_name, #user_password, #user_password_confirmation {
+    display: block;
+    appearance: none;
+    outline: 0;
+    border: 1px solid rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.2);
+    width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    transition-duration: 0.25s;
+    font-weight: 300;
+}
+
+#user_name:hover, #user_password:hover, #user_password_confirmation:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
+#user_name:focus, #user_password:focus, #user_password_confirmation:focus {
+    background-color: white;
+    width: 300px;
+}
+
+.submit-button {
+    appearance: none;
+    outline: 0;
+    background-color: #f26964;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 20px;
+    transition-duration: 0.25s;
+}
+
+.submit-button:hover {
+    background-color: #f5f7f9;
+}
+
+.userlog-link {
+    position: absolute;
+    right: 15%;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: 60px;
+    cursor: pointer;
+    font-size: 20px;
+    transition-duration: 0.25s;
+}
+
+.userlog-anchor {
+    text-decoration: none;
+}
+
+.buttons {
+    position: relative;
+}
+
+.budget-retriever-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+    font-size: 40px;
+	font-weight: 400;
+    min-width: 280px;
+}
