@@ -1,21 +1,31 @@
 <%= render 'welcome/home' %>
 
-<h2>All Record</h2>
-<% @bills.each do |bill| %>
-    <div class="date_space">
-        <%= bill.month_id %>/<%= bill.year %>
-    </div>
-    <div class="category_space">
-        <%= idToCategoryName(bill.category_id) %>
-        <%= idToCategoryName(bill.subcategoryid) %>
-        <%= idToCategoryName(bill.further_subcategoryid) %>
-    </div>
+<%= render partial: "welcome/title_status", locals: {title: "All Record"} %>
 
-    <div class="detail">
-        <%= bill.price %>
-        <%= bill.detail %>
-    </div>
+<div class="data-layout">
+    <div class="content-container">
+    <% @bills.each do |bill| %> 
+        <div class="bill-container">
+            <div class="ebc date_space">
+               <p><%= bill.month_id %>/<%= bill.year %></p>
+            </div>
 
-    <button><%= link_to "Edit", edit_account_bill_path(@account, bill) %></button>
-    <button><%= link_to "Delete", account_bill_path(@account, bill), method: "delete" %></button>
-<% end %>
+            <div class="ebc category_space">
+                <p><%= idToCategoryName(bill.category_id) %></p>
+                <p><%= idToCategoryName(bill.subcategoryid) %></p>
+                <p><%= idToCategoryName(bill.further_subcategoryid) %></p>
+            </div>
+            
+            <div class="ebc edit-delete-buttons">
+                <%= link_to "Edit", edit_account_bill_path(@account, bill), class: "edit-delete-btn" %>
+                <%= link_to "Delete", account_bill_path(@account, bill), method: "delete", class: "edit-delete-btn" %>
+            </div>
+
+            <div class="ebc detail">
+                <p class="bill-price"><%= "$#{bill.price}" %></p>
+                <p class="bill-detail"><%= bill.detail %></p>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>

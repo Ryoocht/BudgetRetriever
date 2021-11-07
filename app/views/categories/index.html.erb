@@ -1,16 +1,18 @@
 <%= render 'welcome/home' %>
 
-<h1>Category</h1>
+<%= render partial: "welcome/title_status", locals: {title: "Category"} %>
 
-<button id="all_list_button">All Category</button>
-<button id="add_button">ADD</button>
-<button id="edit_button">EDIT</button>
-<button id="delete_button">DELETE</button>
+<div class="data-layout">
+    <button id="all_list_button">All Category</button>
+    <button id="add_button">ADD</button>
+    <button id="edit_button">EDIT</button>
+    <button id="delete_button">DELETE</button>
 
-<%= render "add_form" %>
-<%= render "edit_form" %>
+    <%= render "add_form" %>
+    <%= render "edit_form" %>
 
-<%= render "category_list" %>
+    <%= render "category_list" %>
+</div>
 
 <%= stylesheet_link_tag "categories" %>
 <%= javascript_pack_tag "category" %>

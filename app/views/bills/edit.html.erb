@@ -1,6 +1,8 @@
 <%= render 'welcome/home' %>
 
-<h2>Edit Record</h2>
+<%= render partial: "welcome/title_status", locals: {title: "Edit Record"} %>
 
-<%= render "record_options" %>
-<%= render partial: "form", locals: {bill: @bill_param, submitBtn: "Update Record"} %>
+<div class="data-layout">
+    <%= render "record_options" %>
+    <%= render partial: "form", locals: {bill: @bill_param, submitBtn: "Update Record"} %>
+</div>

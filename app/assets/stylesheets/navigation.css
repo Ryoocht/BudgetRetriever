@@ -1,0 +1,84 @@
+.navigation-layout {
+    position: fixed;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    background: #77a8a8;
+}
+
+.title-layout {
+    position: relative;
+    float: right;
+    width: 80%;
+    height: 100px;
+    background: #e4d1d1;
+}
+
+.data-layout {
+    float: right;
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+}
+
+.title-of-title {
+    margin-left: 50px;
+    vertical-align: middle;
+}
+
+.user_info {
+    position: relative;
+    margin: 3em 1em;
+    padding: 0.5em 1em;
+    border: solid 3px #5b9aa0;
+    border-radius: 8px;
+}
+.user_info .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #5b9aa0;
+    color: #36486b;
+    font-weight: bold;
+}
+.user_name {
+    margin: 5px; 
+    padding: 0;
+    font-size: 25px;
+}
+
+.nav-bar {
+    height: auto;
+}
+
+.nav-buttons {
+    display: block;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    line-height: 45px;
+    background: none;
+    border-radius: 10px;
+    border: 2px solid #4040a1;
+}
+
+.nav-buttons:hover {
+    background: #36486b;
+}
+
+.nav-buttons a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.nav-buttons a:hover {
+    color: white;
+}
