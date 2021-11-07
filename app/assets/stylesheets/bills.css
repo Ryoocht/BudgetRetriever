@@ -248,3 +248,31 @@ p {
     box-shadow: none;
     transform: translateY(0);
 }
+
+.show_record {
+    margin: 30px 300px;
+    text-align: center;
+}
+
+.price-receipt {
+    font-size: 80px;
+    border-top: dotted 2px #87CEFA;
+    border-bottom: dotted 2px #87CEFA;
+}
+
+.receipt-record {
+    margin-top: 5px;
+    font-size: 20px;
+    width: 100%;
+    content: "";
+    clear: both;
+    display: table;
+    border-bottom: 2px dashed #000;
+}
+
+.receipt-title {
+    float: left;
+    font-size: 25px;
+    width: 200px;
+    height: 50px;
+}

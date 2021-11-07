@@ -5,22 +5,23 @@
 <div class="data-layout">
   <%= render "record_options" %>
   <div class="show_record">
-    <div class="date_div">
-      <h3>Date: </h3>
+    <div class="price-receipt">
+      <%= "$#{@bill_param.price}" %>
+    </div>
+
+    <div class="receipt-record">
+      <p class="receipt-title">Date</p>
       <%= @bill_param.month_id %><span> / </span><%= @bill_param.year %><br>
     </div>
-    <div class="category_div">
-    <h3>Category</h3>
+    <div class="receipt-record">
+      <p class="receipt-title">Category</p>
       <%= idToCategoryName(@bill_param.category_id) %>
       <%= idToCategoryName(@bill_param.subcategoryid) %>
       <%= idToCategoryName(@bill_param.further_subcategoryid) %>
     </div>
-    <div class="detail_div">
-      <h3>Details</h3>
-        <p>Price: </p>
-        <%= "$#{@bill_param.price}" %><br>
-        <p>Detail: </p>
-        <%= @bill_param.detail %>
+    <div class="receipt-record">
+      <p class="receipt-title">Detail</p>
+      <%= @bill_param.detail %>
     </div>
   <div>
 </div>
