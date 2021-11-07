@@ -3,15 +3,17 @@
 <%= render partial: "welcome/title_status", locals: {title: "Category"} %>
 
 <div class="data-layout">
-    <button id="all_list_button">All Category</button>
-    <button id="add_button">ADD</button>
-    <button id="edit_button">EDIT</button>
-    <button id="delete_button">DELETE</button>
+    <div class="category-contrainer">
+        <button id="all_list_button" class="category-selectors">All Category</button>
+        <button id="add_button" class="category-selectors">ADD</button>
+        <button id="edit_button" class="category-selectors">EDIT</button>
+        <button id="delete_button" class="category-selectors">DELETE</button>
 
-    <%= render "add_form" %>
-    <%= render "edit_form" %>
+        <%= render "add_form" %>
+        <%= render "edit_form" %>
 
-    <%= render "category_list" %>
+        <%= render "category_list" %>
+    </div>
 </div>
 
 <%= stylesheet_link_tag "categories" %>

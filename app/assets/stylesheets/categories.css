@@ -5,3 +5,56 @@
 .subcategory_table th{
     border: 1px solid #000;
 }
+
+.category-contrainer {
+    margin: 30px;
+}
+
+.category-selectors {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    background-color: #9ec34b;
+    border: 2px solid #9ec34b;
+    font-size: 16px;
+    color: #9ec34b;
+    font-weight: bold;
+    padding: 10px 24px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.category-selectors:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.category-selectors::before,
+.category-selectors::after {
+    content: "";
+    display: block;
+    background-color: #FFF;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: .2s;
+}
+
+.category-selectors::after {
+    left: 0;
+}
+
+.category-selectors::before {
+    right: 0;
+}
+
+.category-selectors:hover::before,
+.category-selectors:hover::after {
+    width: 0;
+    background-color: #FFF;
+}
+
+.category-selectors:hover {
+    color: #FFF;
+}
