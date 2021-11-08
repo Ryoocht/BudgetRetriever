@@ -7,14 +7,14 @@ const appendChildrenBox = (insertHTML, status) => {
     let childSelectHtml = "";
     childSelectHtml = `
         <ul>
-            <li class="subcategory_title">Subcategory</li>
+            <li class="category_title">Subcategory</li>
             <ul class="subcategory_name">
                 ${insertHTML}
             </ul>
         </ul>`;
     grandChildSelectHtml = `
         <ul>
-            <li class="further_subcategory_title">Further Subcategory</li>
+            <li class="category_title">Further Subcategory</li>
             <ul class="further_subcategory_name">
                 ${insertHTML}
             </ul>
@@ -163,10 +163,10 @@ sub_table.addEventListener('click', updateEventHandler);
 //target clicked category table
 const updateCategoryForm = category => {
     let html = ` 
-        <div class="selected_element">    
-            <label for="category">Selected Category</label>
+        <div class="selected_element">
+            <p class="input-title">Selected Category</p>
             <input type="hidden" name="category[id]" value=${category.id}>
-            <input type="text" name="category[name]" id=${category.id} value=${category.name}>
+            <input type="text" name="category[name]" id=${category.id} value=${category.name} class="category-update-box">
             <input type="submit" value="UPDATE">
         </div>`;
     return html;
@@ -174,9 +174,9 @@ const updateCategoryForm = category => {
 
 const getParentCategory = category => {
     let html = `
-        <div class="parent_element"    
-            <p>⇧</P>
+        <div class="parent_element">
             <p>${category.name}</p>
+            <i class="fas fa-chevron-right"></i>
         </div`;
     return html;
 }

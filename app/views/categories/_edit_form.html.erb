@@ -5,38 +5,30 @@
 
 <div class="category_table visibilityOn">
     <table class="main_category_table">
-        <thead>
-            <tr>
-                <th colspan="5">Main Category</th>
-            </tr>
-        </thead>
-        <tbody>
+        <tr>
+            <th colspan="10">Main Category</th>
+        </tr>
+        <tr>
             <% @category_parent_array.each do |main| %>
                 <td id=<%= main.id %>><%= main.name %></td>
             <% end %>
-        </tbody>
+        </tr>
     </table>
 
     <table class="subcategory_table">
-        <thead>
+        <tr>
+            <th colspan="10" class="subcategory_title">Subcategory</th>
+        </tr>
+        <% @category_parent_array.each do |main| %>
+        <% getChildCategories(main.id).each do |sub| %>
             <tr>
-                <th>Subcategory</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @category_parent_array.each do |main| %>
-            <tr>
-                <th colspan="10" id=<%= main.id %>><%= main.name %></th>
-                <% getChildCategories(main.id).each do |sub| %>
-                <tr>
-                    <th scope="rowgroup" id=<%= sub.id %>><%= sub.name %></th>
-                    <% getChildCategories(sub.id).each do |grand_child| %>
-                        <th scope="row" id=<%= grand_child.id %>><%= grand_child.name %></th>
-                    <% end %>
-                </tr>
+                <th id=<%= main.id %> class=<%= category_color(main.name)%>><%= main.name %></th>
+                <th scope="rowgroup" id=<%= sub.id %> class="subcategory_title"><%= sub.name %></th>
+                <% getChildCategories(sub.id).each do |grand_child| %>
+                    <td scope="row" id=<%= grand_child.id %>><%= grand_child.name %></td>
                 <% end %>
             </tr>
-            <% end %>
-        </tbody>
+        <% end %>
+        <% end %>
     </table>
 </div>

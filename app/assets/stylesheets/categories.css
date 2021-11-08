@@ -11,50 +11,183 @@
 }
 
 .category-selectors {
-    display: inline-block;
-    width: 200px;
-    text-align: center;
-    background-color: #9ec34b;
-    border: 2px solid #9ec34b;
-    font-size: 16px;
-    color: #9ec34b;
-    font-weight: bold;
-    padding: 10px 24px;
-    border-radius: 4px;
     position: relative;
-}
-
-.category-selectors:hover {
-    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0;
     text-decoration: none;
-}
-
-.category-selectors::before,
-.category-selectors::after {
-    content: "";
-    display: block;
-    background-color: #FFF;
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    transition: .2s;
-}
-
-.category-selectors::after {
-    left: 0;
+    color: #67c5ff;
+    background: none;
+    border: none;
+    font-size: 25px;
+    margin: 15px;
 }
 
 .category-selectors::before {
-    right: 0;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 4px;
+    top:100%;
+    left: 0;
+    border-radius: 3px;
+    background:#67c5ff;
+    transition: .2s;
 }
 
-.category-selectors:hover::before,
-.category-selectors:hover::after {
-    width: 0;
-    background-color: #FFF;
+.category-selectors:hover::before {
+    top: -webkit-calc(100% - 3px);
+    top: calc(100% - 3px);
 }
 
-.category-selectors:hover {
-    color: #FFF;
+.category_list, .subcategory_list, .further_subcategory_list {
+    width: 33%;
+    float: left;
+}
+
+.category_title {
+    list-style-type:none;
+    padding: 0.5rem 1.5rem;
+    border-left: 6px double #000;
+    font-size: 20px;
+}
+
+.category_name li, .subcategory_name li, .further_subcategory_name li {
+    position: relative;
+    display: inline-block;
+    padding: 1rem 2rem 1rem 4rem;
+    color: #fff;
+    border-radius: 100vh 0 0 100vh;
+    background: #001c8e;
+    margin-top: 2px;
+    width: 120px;
+}
+
+.category_name li::before, .subcategory_name li::before, .further_subcategory_name li::before {
+    position: absolute;
+    top: calc(50% - 7px);
+    left: 10px;
+    width: 14px;
+    height: 14px;
+    content: '';
+    border-radius: 50%;
+    background: #fff;
+}
+
+.category-input-field {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.category-input-title {
+    display: inline-block;
+    width: 250px;
+    border-right: 2px solid black;
+    margin-top: 3px;
+}
+
+.category-add-button {
+    width: 100%; 
+    max-width: 250px; 
+    padding: 15px 10px; 
+    display: inline-block; 
+    text-align: center; 
+    letter-spacing: 0.1em; 
+    color: #fff; 
+    background-color: #ed576c; 
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.12), 0 3px 20px 0 rgba(0,0,0,.12), 0 5px 6px -2px rgba(0,0,0,.2); 
+    border: none;
+    -webkit-tap-highlight-color: transparent; 
+    border-radius: 5px; 
+    margin-top: 35px;
+    margin-left: 250px;
+}
+
+.category_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.main_category_table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.main_category_table th {
+    text-align: center;
+    padding: 7px 0;
+    border: none;
+    width: 155px;
+    background-color: #e2e2e2;
+}
+
+.main_category_table td, .subcategory_table td {
+    text-align: center;
+    padding: 7px 0;
+    border-right:solid 1px #ddd;
+    border-left:solid 1px #ddd;
+    width: 155px;
+    cursor: pointer;
+}
+
+.main_category_table td:nth-child(1), .expense-color {
+    background: #f17e8d;
+}
+
+.main_category_table td:nth-child(2), .income-color {
+    background: #49c0ff;
+}
+
+.main_category_table td:nth-child(3), .saving-color {
+    background: #07be64;
+}
+
+.non-color {
+    background: #818df3;
+}
+
+.subcategory_table th {
+    text-align: center;
+    padding: 7px 0;
+    border: none;
+    width: 155px;
+}
+
+.subcategory_table {
+    cursor: pointer;
+}
+
+.subcategory_title {
+    background-color: #e2e2e2;
+}
+
+.insertHTML {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+.selected_element {
+    float: right;
+    margin-right: 300px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.parent_element {
+    float: right;
+    margin-top: 20px;
+}
+
+.parent_element p, .parent_element i {
+    display: inline;
+    font-size: 20px;
+}
+
+.category-update-box {
+    border: 2px solid black;
+    background: none;
 }

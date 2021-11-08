@@ -98,7 +98,7 @@ body {
     width: 300px;
 }
 
-.submit-button {
+.login-button {
     appearance: none;
     outline: 0;
     background-color: #f26964;
@@ -111,7 +111,7 @@ body {
     transition-duration: 0.25s;
 }
 
-.submit-button:hover {
+.login-button:hover {
     background-color: #f5f7f9;
 }
 

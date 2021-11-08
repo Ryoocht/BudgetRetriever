@@ -1,20 +1,20 @@
 <div class="category_input_field visibilityOn">
   <%= form_with model: @category, url: account_categories_path(@account) do |f| %>
     <div>
-      <div class="main_category_box">
-        <%= f.label :main_category %><br>
-        <%= f.text_field :main_category %>
+      <div class="category-input-field main_category_box">
+        <p class="category-input-title">Main Category</p>
+        <%= f.text_field :main_category, class: "dropdown-style" %>
       </div>
-      <div class="subcategory_box">
-        <%= f.label :subcategory %><br>
-        <%= f.text_field :subcategory %>
+      <div class="category-input-field subcategory_box">
+        <p class="category-input-title">Subcategory</p>
+        <%= f.text_field :subcategory, class: "dropdown-style" %>
       </div>
-      <div class="further_subcategory_box">
-        <%= f.label :further_subcategory %><br>
-        <%= f.text_field :further_subcategory %>
+      <div class="category-input-field further_subcategory_box">
+        <p class="category-input-title">Further Subcategory</p>
+        <%= f.text_field :further_subcategory, class: "dropdown-style" %>
       </div>
       <div class="action">
-        <%= f.submit %>
+        <%= f.submit class: "category-add-button" %>
       </div>
     </div>
   <% end %>
