@@ -1,21 +1,36 @@
-<%= render 'welcome/username' %>
+<div class="navigation-layout">
 
-<h1>Create A Budget Table</h1>
+  <div class="user_info">
+    <span class="box-title">User Name</span>
+    <p class="user_name"><%= @user.name %></p>
+  </div>
 
-<div class="account_box">
-<%= form_with model: @account do |f| %>
-  <%= f.label :create_your_new_table %><br>
-  <%= f.text_field :name %>
-  <%= f.hidden_field :user_id, value: @user.id %>
-  <%= f.submit :create %>
-<% end %>
+  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+    <input type=submit value='logout'>
+  <% end %>
 
-<p id="space-or">OR</p>
+</div>
 
-<div class="account_box">
-<%= form_with model: @account do |f| %>
-  <%= f.label :select_your_table %><br>
-  <%= f.collection_select :account_id, @accounts, :id, :name, {prompt: "---"} %>
-  <%= f.submit :select %>
-<% end %>
+<%= render partial: "welcome/title_status", locals: {title: "Create / Select A Budget Table"} %>
+
+<div class="data-layout">
+  <div class="content-container">
+    <div class="account_box">
+    <%= form_with model: @account do |f| %>
+      <p class="account-input">New Table Name</p>
+      <%= f.text_field :name, class: "dropdown-style"%>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.submit :create, class: "submit-button" %>
+    <% end %>
+
+    <p id="space-or">OR</p>
+
+    <div class="account_box">
+    <%= form_with model: @account do |f| %>
+      <%= f.label :select_your_table %><br>
+      <%= f.collection_select :account_id, @accounts, :id, :name, {prompt: "---"} %>
+      <%= f.submit :select %>
+    <% end %>
+    </div>
+  </div>
 </div>
