@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   
   resources :users, only: [:new, :create]
-  resources :accounts, only: [:new, :create, :show] do  
+  resources :accounts, only: [:new, :create] do  
     resources :bills, :categories, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       collection do
         get 'get_category_children'

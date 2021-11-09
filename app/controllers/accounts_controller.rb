@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+
     def new
         @users_accounts = UsersAccount.all
         @accounts = Account.all
@@ -24,10 +25,6 @@ class AccountsController < ApplicationController
             end
         end
         
-    end
-
-    def show
-
     end
 
     private

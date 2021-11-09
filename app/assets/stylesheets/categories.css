@@ -43,6 +43,7 @@
 .category_list, .subcategory_list, .further_subcategory_list {
     width: 33%;
     float: left;
+    cursor: pointer;
 }
 
 .category_title {

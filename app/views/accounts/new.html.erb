@@ -6,7 +6,7 @@
   </div>
 
   <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-    <input type=submit value='logout'>
+    <input type=submit value='logout' class="logout-btn">
   <% end %>
 
 </div>
@@ -16,21 +16,20 @@
 <div class="data-layout">
   <div class="content-container">
     <div class="account_box">
-    <%= form_with model: @account do |f| %>
-      <p class="account-input">New Table Name</p>
-      <%= f.text_field :name, class: "dropdown-style"%>
-      <%= f.hidden_field :user_id, value: @user.id %>
-      <%= f.submit :create, class: "submit-button" %>
-    <% end %>
-
-    <p id="space-or">OR</p>
+      <%= form_with model: @account do |f| %>
+        <p class="account-input">New Table Name</p>
+        <%= f.text_field :name, class: "table-input", placeholder: "--- Table Name ---" %>
+        <%= f.hidden_field :user_id, value: @user.id %>
+        <%= f.submit :create, class: "account-create-btn" %>
+      <% end %>
+    </div>
 
     <div class="account_box">
-    <%= form_with model: @account do |f| %>
-      <%= f.label :select_your_table %><br>
-      <%= f.collection_select :account_id, @accounts, :id, :name, {prompt: "---"} %>
-      <%= f.submit :select %>
-    <% end %>
+      <%= form_with model: @account do |f| %>
+        <p class="account-input">Select Table</p>
+        <%= f.collection_select :account_id, @accounts, :id, :name, {prompt: "--- Select A Table Name"}, class: "table-input" %>
+        <%= f.submit :select, class: "account-create-btn" %>
+      <% end %>
     </div>
   </div>
 </div>
