@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   
   resources :users, only: [:new, :create]
-  resources :accounts, only: [:new, :create] do  
+  resources :accounts, only: [:new, :create] do 
     resources :bills, :categories, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       collection do
         get 'get_category_children'
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         get 'get_selected_category'
         patch 'update_category'
         get 'delete_selected_category'
+        get 'total'
       end
       member do
         get 'get_category_children'
@@ -20,5 +21,4 @@ Rails.application.routes.draw do
       end
     end
   end
-  
 end

@@ -1,0 +1,22 @@
+<%= render 'welcome/home' %>
+
+<%= render partial: "welcome/title_status", locals: {title: "Table Total"} %>
+
+<div class="data-layout">
+    <div class="total-table">
+        <table>
+            <% @months.each do |month|  %>
+            <% @category_parent_array.each do |category| %>
+            <th>
+                <td><%= month.name %></td>
+            </th>
+                <% getChildCategories(category.id).each do |sub| %>
+                <tr>
+                    <td><%= sub.name %></td>
+                </tr>
+                <% end %>
+            <% end %>
+            <% end %>
+        </table>
+    </div>
+</div>

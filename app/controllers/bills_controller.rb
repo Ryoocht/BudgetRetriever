@@ -1,7 +1,8 @@
 class BillsController < ApplicationController
-    before_action :set_category, only: [:new, :edit]
+    before_action :set_category, only: [:new, :edit, :total]
     before_action :set_bill, only: [:show, :edit, :update, :destroy]
-    before_action :set_account, only: [:index, :show, :new, :create]
+    before_action :set_account, only: [:index, :show, :new, :create, :total]
+    before_action :set_months, only: [:new, :edit, :total]
 
     def index
         @bills = Bill.where(account_id: @account)
@@ -12,7 +13,6 @@ class BillsController < ApplicationController
 
     def new
         @bill = Bill.new
-        @months = Month.all
     end
 
     def create
@@ -26,7 +26,6 @@ class BillsController < ApplicationController
 
     def edit
         @bill = Bill.find(params[:id])
-        @months = Month.all
         @account = Account.find(params[:account_id])
     end
     
@@ -50,6 +49,10 @@ class BillsController < ApplicationController
         @category_grandchildren = Category.find(params[:category_id]).children
     end
 
+    def total
+
+    end
+
     private
 
     def set_category
@@ -62,6 +65,10 @@ class BillsController < ApplicationController
 
     def set_account
         @account = Account.find(params[:account_id])
+    end
+
+    def set_months
+        @months = Month.all
     end
 
     def bill_params
