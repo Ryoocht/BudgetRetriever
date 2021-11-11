@@ -1,7 +1,6 @@
 def make_seeds
     make_categories
     make_months
-    # make_bills
 end
 
 def make_categories
@@ -40,12 +39,5 @@ end
 def make_months
     ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].each {|month| Month.create!(name: month)}
 end
-
-# def make_bills
-#     Bill.create(month_id: 10, year: 2021, price: 23.56, detail: "Uber", category_id: 1, subcategory_id: 22, further_subcategory_id: 27)
-#     Bill.create(month_id: 10, year: 2021, price: 25.00, detail: "Haircut", category_id: 1, subcategory_id: 40, further_subcategory_id: 41)
-#     Bill.create(month_id: 10, year: 2021, price: 34.56, detail: "Protain Powder", category_id: 1, subcategory_id: 56, further_subcategory_id: 58)
-#     Bill.create(month_id: 10, year: 2021, price: 56.70, detail: "Woolies", category_id: 1, subcategory_id: 2, further_subcategory_id: 3)
-# end
 
 make_seeds

@@ -1,4 +1,4 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
+<%= form_with model: @user, url: login_path, method: :post do |f| %>
 <div class="bg"></div>
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
@@ -17,6 +17,10 @@
       <div class="userlog-link">
         <%= link_to 'sign up', new_user_path, class: "userlog-anchor" %>
       </div>
+    </div>
+
+    <div class="third-party-auth-container">
+       <%= link_to('Log in with Facebook!', '/auth/facebook', method: :post) %>
     </div>
   </div>
   

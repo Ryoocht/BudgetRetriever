@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  root 'accounts#new'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+  get '/auth/facebook/callback' => 'fb_sessions#create'
   
   resources :users, only: [:new, :create]
   resources :accounts, only: [:new, :create] do 
@@ -21,6 +23,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  root 'welcome#home'
 end
