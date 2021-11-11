@@ -6,6 +6,22 @@
 <div class="title-block">
   <div class="login-form">
     <h1 class="login-title">Login</h1>
+
+    <div class="facebook-container">
+      <%= link_to '/auth/facebook', method: :post, class: "auth-prompt" do %>
+        <i class="fa fa-facebook"></i>
+        <span>Log in with Facebook</span>
+      <% end %>
+    </div>
+    <div class="google-container">
+      <%= link_to '/auth/facebook', method: :post, class: "auth-prompt" do %>
+        <i class="fa"><img src="https://img.icons8.com/color/48/000000/google-logo.png" class="google-icon"/></i>
+        <span>Log in with Google</span>
+      <% end %>
+    </div>
+
+    <p class="login-options">OR</p>
+    
     <div class="form-input-material">
       <%= f.text_field :name, placeholder: "Username" %>
     </div>
@@ -17,10 +33,6 @@
       <div class="userlog-link">
         <%= link_to 'sign up', new_user_path, class: "userlog-anchor" %>
       </div>
-    </div>
-
-    <div class="third-party-auth-container">
-       <%= link_to('Log in with Facebook!', '/auth/facebook', method: :post) %>
     </div>
   </div>
   

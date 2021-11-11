@@ -84,7 +84,6 @@ body {
     margin: 0 auto 10px auto;
     text-align: center;
     font-size: 18px;
-    color: white;
     transition-duration: 0.25s;
     font-weight: 300;
 }
@@ -147,4 +146,52 @@ body {
     font-size: 40px;
 	font-weight: 400;
     min-width: 280px;
+}
+
+.facebook-container {
+    background: #3B5998;
+}
+
+.google-container {
+    margin-top: 3px;
+    background: #2c4762;
+}
+
+.fa {
+    font-size: 30px;
+    width: 40px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+	transition: .3s;
+}
+
+.fa-facebook:hover {
+	transform: translateY(-3px);
+}
+
+.auth-prompt {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.google-icon {
+    width: 65%;
+    height: auto;
+    transition: .3s;
+}
+
+.google-icon:hover{
+    transform: translateY(-3px);
+}
+
+.login-options {
+    margin: 10px 0;
 }
