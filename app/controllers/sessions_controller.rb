@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :require_logged_in, only: [:new, :create]
+    skip_before_action :require_logged_in, only: [:new, :create, :facebook_auth, :google_auth]
 
     def new
         @user = User.new
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         redirect_to new_account_path
     end
 
-    def facebookAuth
+    def facebook_auth
         puts "FacebookAuth METHOD IS CALLED"
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
             u.name = auth['info']['name']
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
         redirect_to new_account_path
     end
 
-    def googleAuth
+    def google_auth
         puts "GoogleAuth METHOD IS CALLED"
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
             u.name = auth['info']['name']
@@ -38,6 +38,8 @@ class SessionsController < ApplicationController
             u.google_refresh_token = refresh_token if refresh_token.present?
             u.password = SecureRandom.urlsafe_base64
         end
+
+        p "USER: #{@user}"
 
         if @user.valid?
             session[:user_id] = @user.id
