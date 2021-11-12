@@ -14,6 +14,31 @@ class SessionsController < ApplicationController
         redirect_to new_account_path
     end
 
+    def facebookAuth
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+            u.name = auth['info']['name']
+            u.email = auth['info']['email']
+            u.image = auth['info']['image']
+        end
+      
+        session[:user_id] = @user.id
+        redirect_to new_account_path
+    end
+
+    def googleAuth
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+            u.name = auth['info']['name']
+            u.email = auth['info']['email']
+            u.image = auth['info']['image']
+            access_token = auth
+            u.google_token = auth.credentials.token
+            refresh_token = auth.credentials.refresh_token
+            u.google_refresh_token = refresh_token if refresh_token.present?
+            u.password = SecureRandom.urlsafe_base64
+        end
+        redirect_to new_account_path
+    end
+
     def destroy
         session.delete :user_id
         redirect_to '/login'
