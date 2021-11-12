@@ -15,17 +15,19 @@ class SessionsController < ApplicationController
     end
 
     def facebookAuth
+        puts "FacebookAuth METHOD IS CALLED"
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
             u.name = auth['info']['name']
             u.email = auth['info']['email']
             u.image = auth['info']['image']
         end
-      
+    
         session[:user_id] = @user.id
         redirect_to new_account_path
     end
 
     def googleAuth
+        puts "GoogleAuth METHOD IS CALLED"
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
             u.name = auth['info']['name']
             u.email = auth['info']['email']
@@ -36,7 +38,14 @@ class SessionsController < ApplicationController
             u.google_refresh_token = refresh_token if refresh_token.present?
             u.password = SecureRandom.urlsafe_base64
         end
-        redirect_to new_account_path
+
+        if @user.valid?
+            session[:user_id] = @user.id
+            redirect_to new_account_path
+        else
+            flash[:message] = "Credential Error"
+            redirect login_path
+        end
     end
 
     def destroy

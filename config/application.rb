@@ -34,5 +34,10 @@ module BudgetRetriever
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # force HTTPS on all environments
+    config.force_ssl = true
+
   end
 end
+

@@ -63,3 +63,5 @@ gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
 
 gem 'thin'
+
+gem 'rack-ssl', require: 'rack/ssl'
