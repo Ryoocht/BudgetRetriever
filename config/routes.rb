@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
-  get 'auth/facebook/callback' => 'sessions#facebook_auth'
+  get 'auth/facebook/callback', to: 'sessions#facebook_auth'
   get 'auth/google_oauth2/callback', to: 'sessions#google_auth'
   get 'auth/failure', to: redirect('/login')
   
