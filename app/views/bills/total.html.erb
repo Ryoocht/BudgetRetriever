@@ -4,18 +4,87 @@
 
 <div class="data-layout">
     <div class="total-table">
-        <table>
-            <% @months.each do |month|  %>
+        <table class="table-all">
             <% @category_parent_array.each do |category| %>
-            <th>
-                <td><%= month.name %></td>
-            </th>
-                <% getChildCategories(category.id).each do |sub| %>
-                <tr>
-                    <td><%= sub.name %></td>
-                </tr>
-                <% end %>
-            <% end %>
+            <tr>
+                <th class="category-name-columns"><%= category.name %></th>
+                <td>
+                    <table>
+                        <th class="sub-cate-title">Subcategory</th>
+                        <th class="sub-cate-title">Further Subcategory</th>
+                        
+                        <% getChildCategories(category.id).each do |subcategory| %>
+                        <tr>
+                            <th><%= subcategory.name %></th>
+                            <td>
+                                <table>
+                                    <th></th>
+                                    <% @months.each do |month| %>
+                                    <th><%= month.id %></th>
+                                    <% end %>
+                                    <% getChildCategories(subcategory.id).each do |fur| %>
+                                        <tr>
+                                            <th><%= fur.name %></th>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                            <td>$23</td>
+                                        </tr>
+                                    <% end %>
+                                    <tr>
+                                        <th class="sub-cate-total"><%= subcategory.name %> Total</th>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                        <td>$276</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th><%= category.name %> Total</th>
+                <td>
+                    <table>
+                        <% @months.each do |month| %>
+                        <th><%= month.id %></th>
+                        <% end %>
+                        <tr>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                            <td>$4000</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
             <% end %>
         </table>
     </div>

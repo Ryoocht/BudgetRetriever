@@ -264,3 +264,13 @@ p {
     width: 200px;
     height: 50px;
 }
+
+/* total table css */
+
+.table-all {
+    width: 100%;
+}
+
+.category-name-columns {
+    border: 2px solid red;
+}
