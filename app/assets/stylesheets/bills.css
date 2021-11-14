@@ -267,10 +267,48 @@ p {
 
 /* total table css */
 
+th, td {
+    text-align: center;
+}
+
 .table-all {
     width: 100%;
 }
 
 .category-name-columns {
-    border: 2px solid red;
+    border: 4px double red;
+}
+
+.sub-cate-title {
+    border: 2px solid black;
+}
+
+.sub-cate-name {
+    border: 2px solid blue;
+}
+
+.sub-cate-width, .table-size {
+    width: 100%;
+}
+
+.sub-cate-total {
+    border-top: 2px solid black;
+}
+
+.cate-total {
+    background: #eea29a;
+}
+
+.cate-month-total {
+    width: 100%;
+    padding-left: 200px;
+    background: #f7cac9;
+}
+
+.sub-cate-table {
+    width: 100%;
+}
+
+.fur-sub-cate-titles {
+    width: 150px;
 }

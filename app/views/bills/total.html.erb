@@ -15,44 +15,26 @@
                         
                         <% getChildCategories(category.id).each do |subcategory| %>
                         <tr>
-                            <th><%= subcategory.name %></th>
-                            <td>
-                                <table>
+                            <th class="sub-cate-name"><%= subcategory.name %></th>
+                            <td class="sub-cate-name sub-cate-width">
+                                <table class="sub-cate-table">
                                     <th></th>
                                     <% @months.each do |month| %>
                                     <th><%= month.id %></th>
                                     <% end %>
                                     <% getChildCategories(subcategory.id).each do |fur| %>
                                         <tr>
-                                            <th><%= fur.name %></th>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
-                                            <td>$23</td>
+                                            <th class="fur-sub-cate-titles"><%= fur.name %></th>
+                                            <% @further_subcategory_total[:"#{fur.name}"].each do |       month_total| %>
+                                            <td>$<%= month_total %></td>
+                                            <% end %>
                                         </tr>
                                     <% end %>
-                                    <tr>
+                                    <tr class="sub-cate-total">
                                         <th class="sub-cate-total"><%= subcategory.name %> Total</th>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
-                                        <td>$276</td>
+                                        <% @subcategory_total[:"#{subcategory.name}"].each do |       month_total| %>
+                                            <td>$<%= month_total %></td>
+                                        <% end %>
                                     </tr>
                                 </table>
                             </td>
@@ -61,27 +43,23 @@
                     </table>
                 </td>
             </tr>
-            <tr>
-                <th><%= category.name %> Total</th>
+            <tr class="cate-total">
+                <td></td>
                 <td>
                     <table>
-                        <% @months.each do |month| %>
-                        <th><%= month.id %></th>
-                        <% end %>
-                        <tr>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                            <td>$4000</td>
-                        </tr>
+                    <th class="sub-cate-name"><%= category.name %> Total</th>
+                    <td class="cate-month-total">
+                        <table class="table-size">
+                            <% @months.each do |month| %>
+                            <th><%= month.id %></th>
+                            <% end %>
+                            <tr>
+                            <% @category_total[:"#{category.name}"].each do |month_total| %>
+                                <td>$<%= month_total %></td>
+                            <% end %>
+                            </tr>
+                        </table>
+                    </td>
                     </table>
                 </td>
             </tr>

@@ -12,4 +12,25 @@ class Bill < ApplicationRecord
     # validates :category, exclusion: { in: %w(Select Category), message: "Please Select Category from the options"}
     # validates :detail, length: { in: 1..30 }
 
+    # total table scopes
+    scope :main_category_scope, -> (category, month) {
+        total = "price) FROM bills WHERE category_id = #{category} AND month_id = #{month};"
+        if total != nil
+            calculate(:sum, total)
+        end
+    }
+
+    scope :subcategory_scope, -> (category, month) {
+        total = "price) FROM bills WHERE subcategoryid = #{category} AND month_id = #{month};"
+        if total != nil
+            calculate(:sum, total)
+        end
+    }
+
+    scope :further_subcategory_scope, -> (category, month) {
+        total = "price) FROM bills WHERE further_subcategoryid = #{category} AND month_id = #{month};"
+        if total != nil
+            calculate(:sum, total)
+        end
+    }
 end
