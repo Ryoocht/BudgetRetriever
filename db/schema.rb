@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_11_05_083847) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -19,13 +22,13 @@ ActiveRecord::Schema.define(version: 2021_11_05_083847) do
   end
 
   create_table "bills", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "month_id", null: false
-    t.integer "account_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "month_id", null: false
+    t.bigint "account_id", null: false
     t.integer "year"
     t.float "price"
     t.text "detail"
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.integer "subcategoryid"
     t.integer "further_subcategoryid"
     t.datetime "created_at", precision: 6, null: false
@@ -64,8 +67,8 @@ ActiveRecord::Schema.define(version: 2021_11_05_083847) do
   end
 
   create_table "users_accounts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "account_id"
+    t.bigint "user_id"
+    t.bigint "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_users_accounts_on_account_id"
@@ -73,8 +76,8 @@ ActiveRecord::Schema.define(version: 2021_11_05_083847) do
   end
 
   create_table "users_bills", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "bill_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "bill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bill_id"], name: "index_users_bills_on_bill_id"
