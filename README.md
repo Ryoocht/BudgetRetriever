@@ -1,21 +1,24 @@
 # BudgetRetriever
 ## Details about Budget Retriever
-Check out my blog writting about this project and a bit of the details
+Check out my blog writting about this project and a bit of the details  
 URL: https://medium.com/@Ryoocht/ruby-on-rails-project-budget-retriever-frontend-backend-app-7b043bbe3dc
 
 ## Ruby version
 ruby 3.0.0
 
 ## Configurations
-Database: PostgreSQL
+Database: PostgreSQL  
 Added Gems: Omniauth(Facebook, Google), dotenv-rails, ancestry, bcrypt
 
+## Install
+To use: $ Clone this repository  
+step 1: $ bundle install  
+step 2: $ rails db:create  
+step 3: $ rails db:migrate  
+step 4: $ rails db:seed  
+
 ## Usage
-To use: $ Clone this repository
-step 1: $ bundle install
-step 2: $ rails db:create
-step 3: $ rails db:migrate
-step 4: $ rails db:seed
+This application allows you to track your budget records. Statistically, the more you track your bills, the more money you can save. Hopefully, it visualises your money flow and gives you a chance to reconsider how to deal with your money.
 
 ## Features
 ### Authentication
